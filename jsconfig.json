@@ -1,4 +1,7 @@
 {
+  "include": [
+    "./src/*"
+],
   "compilerOptions": {
     "target": "es5",
     "module": "esnext",
@@ -9,6 +12,7 @@
         "src/*"
       ]
     },
+    "jsx":"preserve",
     "lib": [
       "esnext",
       "dom",

@@ -20,8 +20,8 @@ export default {
   data() {
     return {
       form: {
-        username: "",
-        password: ""
+        username:"",
+        password:""
       },
     };
   },
@@ -30,8 +30,12 @@ export default {
     async register() {
       const { data: res } = await this.$http.post("/api/user/register", this.form)
       console.log(res)
-      if (res.meta.status != 200) this.$message.error("注册失败");
-      this.$message.success("注册成功");
+      if (res.meta.status !== 200) { 
+        this.$message.error("已经注册") 
+      }
+      else {
+        this.$message.success("注册成功")
+      }
     },
     //登录
     async login() {
@@ -39,14 +43,12 @@ export default {
         params: this.form
       })
       console.log(res)
-      if (res.meta.status==200) {
+      if (res.meta.status == 200) {
         this.$message.success("登录成功");
         this.$router.push("/home")
       } else {
         this.$message.error("登录失败");
-         
       }
-      
     }
   }
 };
